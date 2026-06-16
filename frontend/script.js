@@ -16,7 +16,7 @@ button.addEventListener("click", async () => {
   resultText.innerHTML = "🔄 Đang phân tích...";
 
   try {
-    const response = await fetch("https://YOUR-BACKEND.onrender.com/analyze", {
+    const response = await fetch("https://scamcheck-2-07zf.onrender.com/", {
       method: "POST",
 
       headers: {
