@@ -12,7 +12,9 @@ CORS(app)
 client = genai.Client(
     api_key=os.environ.get("GEMINI_API_KEY")
 )
-
+@app.route("/")
+def home():
+    return "ScamCheck AI backend is running"
 @app.route("/analyze", methods=["POST"])
 def analyze():
 
