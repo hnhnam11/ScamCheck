@@ -1,3 +1,4 @@
+```python
 from flask import Flask, request
 from flask_cors import CORS
 
@@ -12,9 +13,7 @@ CORS(app)
 client = genai.Client(
     api_key=os.environ.get("GEMINI_API_KEY")
 )
-@app.route("/")
-def home():
-    return "ScamCheck AI backend is running"
+
 @app.route("/analyze", methods=["POST"])
 def analyze():
 
@@ -31,18 +30,32 @@ Hãy phân tích tin nhắn sau:
 
 {message}
 
-Trả lời theo mẫu:
+Đánh giá mức độ nghiêm trọng theo 4 mức:
+
+- Nghiêm trọng: Gần như chắc chắn là lừa đảo. Có dấu hiệu yêu cầu chuyển tiền, cung cấp OTP, mật khẩu, thông tin ngân hàng hoặc giả mạo cơ quan/tổ chức.
+- Cao: Có nhiều dấu hiệu lừa đảo rõ ràng và nguy cơ mất tiền hoặc mất thông tin cá nhân cao.
+- Trung bình: Có một số dấu hiệu đáng ngờ nhưng chưa đủ cơ sở để khẳng định là lừa đảo.
+- Thấp: Không phát hiện dấu hiệu lừa đảo rõ ràng hoặc mức độ rủi ro thấp.
+
+Trả lời theo đúng mẫu:
 
 KẾT LUẬN:
-...
+(Có dấu hiệu lừa đảo / Không có dấu hiệu lừa đảo / Cần thận trọng)
+
+MỨC ĐỘ:
+(Nghiêm trọng / Cao / Trung bình / Thấp)
 
 PHÂN TÍCH:
-...
+- Ý 1
+- Ý 2
+- Ý 3
+
+Chỉ trả về kết quả phân tích, không thêm lời chào hoặc giải thích khác.
 """
     )
 
     return response.text
 
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 10000))
-    app.run(host="0.0.0.0", port=port)
+    app.run(debug=True)
+```
